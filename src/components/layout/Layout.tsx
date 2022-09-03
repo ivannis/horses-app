@@ -11,7 +11,7 @@ type LayoutProps = {
 export const Layout: FC<LayoutProps> = ({ links, children }) => {
   return (
     <>
-      <Header name='App' links={links} />
+      <Header name='Horsyup' links={links} />
       <Container>{children}</Container>
     </>
   )

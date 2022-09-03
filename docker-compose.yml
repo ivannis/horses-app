@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  horses-api:
+    container_name: horses-api
+    image: firstaml/horse-test:latest
+    ports:
+      - 3016:3016

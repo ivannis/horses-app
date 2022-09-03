@@ -1,9 +1,18 @@
-import { Hero } from '../../components'
+import { Container } from '@mantine/core'
+
+import { Hero, ErrorBoundary } from '@/components'
+import { Horses } from './containers'
+import { useStyles } from './styles'
 
 export const Home = () => {
+  const { classes } = useStyles()
+
   return (
-    <div>
+    <Container className={classes.content}>
       <Hero />
-    </div>
+      <ErrorBoundary>
+        <Horses perPage={10} />
+      </ErrorBoundary>
+    </Container>
   )
 }

@@ -16,7 +16,7 @@ test('renders Layout component', () => {
     { wrapper: BrowserRouter },
   )
 
-  expect(screen.getByText('App')).toBeInTheDocument()
+  expect(screen.getByText('Horsyup')).toBeInTheDocument()
   expect(screen.getByText('Welcome')).toBeInTheDocument()
   expect(screen.getByText('Home')).toBeInTheDocument()
   expect(screen.getByText('About')).toBeInTheDocument()

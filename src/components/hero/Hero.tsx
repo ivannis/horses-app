@@ -4,16 +4,16 @@ import image from './image.svg'
 
 export const Hero = () => {
   const { classes } = useStyles()
+
   return (
     <Container>
       <div className={classes.inner}>
         <div className={classes.content}>
           <Title data-testid='hero-title' className={classes.title}>
-            A <span className={classes.highlight}>modern</span> React components library
+            The <span className={classes.highlight}>world’s</span> premier comparing horses platform
           </Title>
           <Text data-testid='hero-description' color='dimmed' mt='md'>
-            Build fully functional accessible web applications faster than ever – Mantine includes more than 120
-            customizable components and hooks to cover you in any situation
+            A fully featured web platform to find the best horses in the world
           </Text>
 
           <Group mt={30}>

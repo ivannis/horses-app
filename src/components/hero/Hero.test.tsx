@@ -9,5 +9,5 @@ test('renders Hero component', () => {
   expect(screen.getByTestId('hero-button')).toBeInTheDocument()
   expect(screen.getByTestId('hero-image')).toBeInTheDocument()
 
-  expect(screen.getByText(/React components library/i)).toBeInTheDocument()
+  expect(screen.getByText(/A fully featured web platform to find the best horses in the world/i)).toBeInTheDocument()
 })
