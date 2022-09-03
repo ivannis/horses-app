@@ -1,9 +1,12 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
+import { Horse } from './types'
 
 const client = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3016',
 })
+
+type HorseValues = Partial<Omit<Horse, 'id'>>
 
 const fetchHorseList = async () => {
   const { data } = await client.get('/horse')
@@ -17,16 +20,34 @@ const fetchHorseById = async (horseId: string) => {
   return data
 }
 
-const useHorses = () => {
+const updateHorse = async (horseId: string, values: HorseValues) => {
+  const { data } = await client.put(`/horse/${horseId}`, values)
+
+  return data
+}
+
+const useHorses = (): Horse[] => {
   const { data } = useQuery(['horses'], fetchHorseList)
 
   return data
 }
 
-const useHorse = <T>(horseId: string): T => {
+const useHorse = (horseId: string): Horse => {
   const { data } = useQuery(['horses', horseId], () => fetchHorseById(horseId))
 
   return data
 }
 
-export { useHorses, useHorse }
+const useUpdateHorse = (horseId: string) => {
+  const queryClient = useQueryClient()
+
+  const { mutate } = useMutation((values: HorseValues) => updateHorse(horseId, values), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['horses', horseId])
+    },
+  })
+
+  return mutate
+}
+
+export { useHorses, useHorse, useUpdateHorse }

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from './components'
-import { Home, About, Profile } from './pages'
+import { Home, About, Profile, Edit } from './pages'
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='about' element={<About />} />
         <Route path='profile/:horseId' element={<Profile />} />
+        <Route path='profile/:horseId/edit' element={<Edit />} />
       </Routes>
     </Layout>
   )

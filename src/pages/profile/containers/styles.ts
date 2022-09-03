@@ -19,14 +19,14 @@ export const useStyles = createStyles((theme) => ({
     },
   },
 
-  ring: {
+  space: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'flex-end',
+    flexGrow: 1,
+  },
 
-    [theme.fn.smallerThan(350)]: {
-      justifyContent: 'center',
-      marginTop: theme.spacing.md,
-    },
+  right: {
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
 }))

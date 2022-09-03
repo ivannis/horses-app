@@ -26,6 +26,10 @@ const HorsesContainer: FC<HorsesContainerProps> = ({ initialPage = 1, perPage = 
     navigate(`/profile/${id}`)
   }
 
+  const handleOnEdit = (id: string) => {
+    navigate(`/profile/${id}/edit`)
+  }
+
   const handleOnDelete = (id: string) => {
     console.log(`DELETE /horses/${id}`)
   }
@@ -44,7 +48,7 @@ const HorsesContainer: FC<HorsesContainerProps> = ({ initialPage = 1, perPage = 
 
   return (
     <Stack>
-      <HorseList horses={list} onViewHorse={handleOnView} onDeleteHorse={handleOnDelete} />
+      <HorseList horses={list} onViewHorse={handleOnView} onEditHorse={handleOnEdit} onDeleteHorse={handleOnDelete} />
       {renderPagination()}
     </Stack>
   )

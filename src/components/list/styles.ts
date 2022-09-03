@@ -6,11 +6,9 @@ export const useStyles = createStyles((theme) => ({
     width: '100%',
     padding: theme.spacing.md,
     color: theme.black,
-    cursor: 'pointer',
-
-    '&:hover': {
-      backgroundColor: theme.colors.gray[0],
-    },
+    borderColor: theme.colors.gray[0],
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
   },
   horseItemPlaceholderContainer: {
     alignItems: 'center',

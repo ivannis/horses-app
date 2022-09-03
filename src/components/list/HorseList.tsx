@@ -6,10 +6,11 @@ import { Horse } from '@/services'
 type HorseListProps = {
   horses: Horse[]
   onViewHorse?: (id: string) => void
+  onEditHorse?: (id: string) => void
   onDeleteHorse?: (id: string) => void
 }
 
-export const HorseList: FC<HorseListProps> = ({ horses, onViewHorse, onDeleteHorse }) => {
+export const HorseList: FC<HorseListProps> = ({ horses, onViewHorse, onEditHorse, onDeleteHorse }) => {
   return (
     <List spacing='xs' size='xl' center data-testid='horse-list'>
       {horses.map(({ id, name, profile: { favouriteFood } }) => {
@@ -20,6 +21,7 @@ export const HorseList: FC<HorseListProps> = ({ horses, onViewHorse, onDeleteHor
               name={name}
               favouriteFood={favouriteFood}
               onViewHorse={onViewHorse}
+              onEditHorse={onEditHorse}
               onDeleteHorse={onDeleteHorse}
             />
           </List.Item>

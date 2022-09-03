@@ -1,9 +1,10 @@
 import { FC, Suspense } from 'react'
-import { Text, Card, Group, Stack, Avatar, Skeleton } from '@mantine/core'
+import { Text, Card, Group, Stack, Avatar, Skeleton, Button } from '@mantine/core'
+import { useNavigate } from 'react-router-dom'
 import { IconCheese } from '@tabler/icons'
 
 import image from '@/components/list/image.svg'
-import { useHorse, Horse } from '@/services'
+import { useHorse } from '@/services'
 import { useStyles } from './styles'
 
 type HorseContainerProps = {
@@ -14,11 +15,20 @@ const HorseContainer: FC<HorseContainerProps> = ({ horseId }) => {
   const {
     name,
     profile: { favouriteFood, physical },
-  } = useHorse<Horse>(horseId)
+  } = useHorse(horseId)
   const { classes } = useStyles()
+  const navigate = useNavigate()
+
+  const handleOnBack = () => {
+    navigate('/')
+  }
+
+  const handleOnEdit = () => {
+    navigate(`/profile/${horseId}/edit`)
+  }
 
   return (
-    <Card p='xl' radius='md' className={classes.card}>
+    <Card p='xl' className={classes.card}>
       <div className={classes.inner}>
         <div>
           <Text size='xl' className={classes.label}>
@@ -47,9 +57,19 @@ const HorseContainer: FC<HorseContainerProps> = ({ horseId }) => {
             </Group>
           </Stack>
         </div>
-        <div className={classes.ring}>
+        <div className={classes.space} />
+        <Stack className={classes.right}>
           <Avatar src={image} radius='xl' />
-        </div>
+
+          <Group>
+            <Button variant='light' color='gray' onClick={handleOnBack} compact>
+              list
+            </Button>
+            <Button variant='light' onClick={handleOnEdit} compact>
+              edit
+            </Button>
+          </Group>
+        </Stack>
       </div>
     </Card>
   )
