@@ -11,10 +11,22 @@ const fetchHorseList = async () => {
   return data
 }
 
+const fetchHorseById = async (horseId: string) => {
+  const { data } = await client.get(`/horse/${horseId}`)
+
+  return data
+}
+
 const useHorses = () => {
   const { data } = useQuery(['horses'], fetchHorseList)
 
   return data
 }
 
-export { useHorses }
+const useHorse = <T>(horseId: string): T => {
+  const { data } = useQuery(['horses', horseId], () => fetchHorseById(horseId))
+
+  return data
+}
+
+export { useHorses, useHorse }
